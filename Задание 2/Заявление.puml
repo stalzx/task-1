@@ -1,0 +1,63 @@
+@startuml
+package "Заявление" {
+  entity "Application" as application {
+    + application_id [PK]
+    --
+    applicant_id [FK]
+    specialty_id [FK]
+    contact_info_id [FK]
+  }
+
+  entity "Personal information" as personal_information {
+    + personal_info_id [PK]
+    --
+    first_name
+    last_name
+    date_of_birth
+    --
+    application_id [FK]
+  }
+
+  entity "Address" as address {
+    + address_id [PK]
+    --
+    city
+    street
+    house
+    --
+    application_id [FK]
+  }
+
+  entity "Documents" as documents {
+    + document_id [PK]
+    --
+    document_type
+    document_number
+    --
+    application_id [FK]
+  }
+
+  entity "Specialty" as specialty {
+    + specialty_id [PK]
+    --
+    specialty_name
+    training time
+  }
+
+  entity "Contact information" as contact_information {
+    + contact_info_id [PK]
+    --
+    email
+    phone_number
+    --
+    application_id [FK]
+  }
+}
+
+application ||-down-> personal_information
+application ||-down-> address
+application ||-down-> documents
+application ||-down-> specialty
+application ||-down-> contact_information
+
+@enduml

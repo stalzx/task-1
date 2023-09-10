@@ -1,0 +1,59 @@
+На основе образца заявления была построина логическая модель, отражающая взаимосвязь сущность-отношения с помощью PlantUML. Код сохранён в файле Заявление.puml
+
+Сущности:
+
+1. Заявление (Application): информация о заявлении поступающего.
+2. Персональные данные (Personal information): информация о поступающем, такая как имя, фамилия и дата рождения.
+3. Адрес (Address): информация о поступающем адресе.
+4. Документы (Documents): информация о представленных документах для подтверждения уровня образования.
+5. Специальность (Specialty/Profession): информация о выбранной специальности/профессии для поступления.
+6. Контактные данные (Contact information): информация о контактных данных поступающего.
+
+Отношения:
+
+1. Принадлежность заявления к поступающему (Application belongs to Applicant).
+2. Персональные данные принадлежат заявлению (Personal information belongs to Application).
+3. Адрес принадлежит заявлению (Address belongs to Application).
+4. Документы принадлежат заявлению (Documents belong to Application).
+5. Выбор специальности (Specialty/Profession selection) принадлежит заявлению (Specialty/Profession selection belongs to Application).
+6. Контактные данные принадлежат заявлению (Contact information belongs to Application).
+
+
+Описание таблиц:
+
+1. Таблица "Заявление" (Application):
+- application_id (Идентификатор заявления, PRIMARY KEY)
+- applicant_id (Идентификатор поступающего, FOREIGN KEY)
+- specialty_id (Идентификатор выбранной специальности, FOREIGN KEY)
+- contact_info_id (Идентификатор контактной информации, FOREIGN KEY)
+
+2. Таблица "Персональные данные" (Personal information):
+- personal_info_id (Идентификатор персональных данных, PRIMARY KEY)
+- first_name (Имя)
+- last_name (Фамилия)
+- date_of_birth (Дата рождения)
+- application_id (Идентификатор заявления, FOREIGN KEY)
+
+3. Таблица "Адрес" (Address):
+- address_id (Идентификатор адреса, PRIMARY KEY)
+- city (Город)
+- street (Улица)
+- house (Дом, квартира)
+- application_id (Идентификатор заявления, FOREIGN KEY)
+
+4. Таблица "Документы" (Documents):
+- document_id (Идентификатор документа, PRIMARY KEY)
+- document_type (Тип документа)
+- document_number (Номер документа)
+- application_id (Идентификатор заявления, FOREIGN KEY)
+
+5. Таблица "Специальность" (Specialty/Profession):
+- specialty_id (Идентификатор специальности, PRIMARY KEY)
+- specialty_name (Название специальности)
+- training time (Длительность обучения)
+
+6. Таблица "Контактная информация" (Contact information):
+- contact_info_id (Идентификатор контактной информации, PRIMARY KEY)
+- email (Email адрес)
+- phone_number (Номер телефона)
+- application_id (Идентификатор заявления, FOREIGN KEY)
